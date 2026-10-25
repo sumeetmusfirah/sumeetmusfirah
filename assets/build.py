@@ -371,7 +371,80 @@ def brand_sheet(p):
                "sage, moss, clay, burgundy.", "\n".join(out), p)
 
 
+def ticker(p):
+    """Typewriter line cycling through current research threads."""
+    phrases = ["epistemic independence in interacting LLMs",
+               "confidence contagion & information cascades",
+               "persuasion and behavioral drift in LLMs",
+               "evaluation of AI in high-stakes settings",
+               "human cognition ↔ artificial-agent behavior"]
+    n, slot = len(phrases), 3.4
+    cycle = n * slot
+    vis = 100 / n
+    css = [f"@keyframes show{{0%,{vis - 0.1:.2f}%{{opacity:1}}{vis:.2f}%,100%{{opacity:0}}}}",
+           "@media (prefers-reduced-motion:reduce){.ph{opacity:0}.ph0{opacity:1}.cover{display:none}}"]
+    out = [text(48, 52, "> currently investigating:", "mono muted", 15)]
+    x0 = 300
+    for i, ph in enumerate(phrases):
+        w = int(len(ph) * 9.4) + 14
+        delay = i * slot - cycle
+        css.append(f".ph{i}{{animation:show {cycle}s linear {delay:.1f}s infinite}}"
+                   f"@keyframes type{i}{{0%{{transform:translateX(0)}}{vis * 0.45:.2f}%,100%{{transform:translateX({w}px)}}}}"
+                   f".cv{i}{{animation:type{i} {cycle}s steps({len(ph)},end) {delay:.1f}s infinite}}")
+        out.append(f'<g class="ph ph{i}">'
+                   + text(x0, 52, ph, "mono ink", 15)
+                   + f'<g class="cover cv{i}"><rect x="{x0 - 2}" y="30" width="{w + 20}" height="32" '
+                     f'fill="{p["bg"]}"/><rect x="{x0}" y="38" width="8" height="18" class="wine cursor"/></g>'
+                   + "</g>")
+    out.insert(0, "<style>" + "".join(css) + "</style>")
+    return svg(1200, 84, "Currently investigating",
+               "Typewriter line cycling through: " + "; ".join(phrases) + ".", "\n".join(out), p)
+
+
+def cascade(p):
+    """Schematic (not data): confidence propagates along agents; evidence stays flat."""
+    k, cyc, step = 8, 12.0, 1.0
+    xs = [120 + i * 137 for i in range(k)]
+    cy, base = 200, 162
+    css = []
+    out = [text(48, 56, "SCHEMATIC · NOT DATA", "mono wine label"),
+           text(48, 86, "Can confidence travel further than the evidence that justified it?",
+                "serif ink", 20, extra=' font-style="italic"')]
+    for i, x in enumerate(xs):
+        on = (1 + i * step) / cyc * 100
+        css.append(f"@keyframes on{i}{{0%,{on:.1f}%{{opacity:0}}{on + 3:.1f}%,92%{{opacity:1}}100%{{opacity:0}}}}"
+                   f"@keyframes bar{i}{{0%,{on:.1f}%{{transform:scaleY(0)}}{on + 5:.1f}%,92%"
+                   f"{{transform:scaleY({1 - i * 0.04:.2f})}}100%{{transform:scaleY(0)}}}}"
+                   f".n{i}{{opacity:{1 if i < 4 else 0};animation:on{i} {cyc}s ease-out infinite}}"
+                   f".b{i}{{transform-box:fill-box;transform-origin:50% 100%;"
+                   f"transform:scaleY({(1 - i * 0.04) if i < 4 else 0:.2f});animation:bar{i} {cyc}s ease-out infinite}}")
+        if i:
+            out.append(f'<line x1="{xs[i-1] + 14}" y1="{cy}" x2="{x - 16}" y2="{cy}" class="line" marker-end="url(#arr)"/>')
+        out.append(f'<rect x="{x - 5}" y="{base - 50}" width="10" height="50" class="hair"/>')
+        out.append(f'<rect x="{x - 5}" y="{base - 50}" width="10" height="50" class="clay b{i}"/>')
+        out.append(f'<circle cx="{x}" cy="{cy}" r="12" class="motif" style="fill:{p["panel"]}"/>')
+        out.append(f'<circle cx="{x}" cy="{cy}" r="12" class="wine n{i}"/>')
+        out.append(text(x, cy + 36, f"agent {i + 1}", "mono muted", 11, "middle"))
+    ey = 262
+    out += [f'<line x1="{xs[0] - 12}" y1="{ey}" x2="{xs[-1] + 12}" y2="{ey}" stroke="{p["moss"]}" '
+            f'stroke-width="1.4" stroke-dasharray="5 5"/>',
+            text(xs[0] - 12, ey + 22, "evidence available to each agent: unchanged", "mono moss", 11.5),
+            text(xs[-1] + 12, ey + 22, "bars = expressed confidence", "mono clay", 11.5, "end")]
+    out.append(caption(342, "SKETCH", [
+        "An illustration of the hypothesis Aletheia tests, not a result: each agent sees the previous",
+        "agent's answer and confidence, while the evidence itself never changes.",
+    ], p))
+    out.insert(0, "<style>" + "".join(css) + "@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>")
+    return svg(1200, 392, "Sketch: confidence cascade across agents",
+               "Schematic, not data. Eight agents in a chain; each turns burgundy and raises a "
+               "confidence bar after the previous one, while a dashed evidence line stays flat. "
+               "Illustrates the question of whether confidence can propagate independently of evidence.",
+               "\n".join(out), p)
+
+
 ASSETS = {
+    "branding/ticker": ticker,
+    "diagrams/confidence-cascade": cascade,
     "branding/avatar": avatar,
     "branding/brand-sheet": brand_sheet,
     "branding/header": header,

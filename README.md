@@ -16,6 +16,11 @@ myself.
 `NeuroAI` · `cognitive science` · `multimodal AI`
 
 <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/branding/ticker-dark.svg">
+  <img src="assets/branding/ticker-light.svg" width="100%" alt="Currently investigating, cycling: epistemic independence in interacting LLMs; confidence contagion and information cascades; persuasion and behavioral drift in LLMs; evaluation of AI in high-stakes settings; human cognition and artificial-agent behavior.">
+</picture>
+
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/research-map-dark.svg">
   <img src="assets/diagrams/research-map-light.svg" width="100%" alt="Figure 1, research program map. Biological and human systems (cognitive control, social cognition, neuroethics) and artificial systems (interacting LLMs, model behavior, evaluation) both feed four shared questions, listed under Open questions below. An axis from biological to artificial places each project described under Selected research.">
 </picture>
@@ -32,6 +37,11 @@ myself.
   real cost, as in clinical work.
 - **Human cognition ↔ artificial-agent behavior.** Using paradigms from social and cognitive
   psychology as instruments for studying models.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/confidence-cascade-dark.svg">
+  <img src="assets/diagrams/confidence-cascade-light.svg" width="100%" alt="Sketch, not data: eight agents in a chain. Each adopts the previous agent's answer and raises its expressed confidence, while the evidence available to every agent stays unchanged. Illustrates the question: can confidence travel further than the evidence that justified it?">
+</picture>
 
 ## Selected research
 

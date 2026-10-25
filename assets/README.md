@@ -9,8 +9,8 @@ python3 assets/build.py
 
 | Folder | Contents |
 | --- | --- |
-| `branding/` | masthead (`header`), footer, `avatar` (SVG + 1024px PNG), `brand-sheet` |
-| `diagrams/` | program-level schematics (`research-map`) |
+| `branding/` | masthead (`header`), animated `ticker`, footer, `avatar` (SVG + 1024px PNG), `brand-sheet` |
+| `diagrams/` | program-level schematics (`research-map`, animated `confidence-cascade` sketch) |
 | `research/` | per-study design figures (`aletheia-exp001-design`, `pressure-evals-judges`) |
 | `figures/` | reserved for data figures generated from a public, committed dataset |
 
