@@ -443,7 +443,69 @@ def cascade(p):
                "\n".join(out), p)
 
 
+def aletheia_header(p):
+    """Masthead for the Project Aletheia org page (animated graph motif)."""
+    body = "\n".join([
+        text(56, 64, "PROJECT ALETHEIA  ·  INDEPENDENT RESEARCH", "mono muted label"),
+        f'<rect x="398" y="54" width="7" height="12" class="sig cursor"/>',
+        f'<line x1="56" y1="84" x2="1144" y2="84" stroke="{p["ink"]}" stroke-width="0.8"/>',
+        text(56, 160, "Aletheia", "serif ink", 64, extra=' letter-spacing="0.4"'),
+        text(330, 160, "ἀλήθεια · unconcealment", "serif muted", 20, extra=' font-style="italic"'),
+        text(56, 204, "How language models decide whom to believe.", "serif muted", 24,
+             extra=' font-style="italic"'),
+        text(56, 246, "SOCIAL INFLUENCE · EPISTEMIC UPDATING · PERSUASION · EVALUATOR RELIABILITY",
+             "mono moss label"),
+        text(56, 266, "PREREGISTERED · LOCAL OPEN-WEIGHT MODELS · DETERMINISTIC SCORING", "mono moss label"),
+        neuron_to_graph(0, 4),
+        f'<line x1="56" y1="294" x2="1144" y2="294" stroke="{p["ink"]}" stroke-width="0.8"/>',
+    ])
+    return svg(1200, 320, "Project Aletheia — How language models decide whom to believe",
+               "Masthead for Project Aletheia: social influence, epistemic updating, persuasion, and "
+               "evaluator reliability in language models.", body, p)
+
+
+def aletheia_timeline(p):
+    """Program timeline: what exists, with honest status per study."""
+    steps = [
+        ("Persuasion Topography", "taxonomy of pressures", "v0 · exploratory", "muted"),
+        ("Pressure evals v0.1", "180 outputs · 2 judges", "complete · public", "clay"),
+        ("Exp 001", "source attribution", "preregistered · no data yet", "moss"),
+        ("Multi-agent cascades", "confidence contagion", "planned", "muted"),
+    ]
+    xs = [150, 450, 750, 1050]
+    y = 170
+    css = []
+    out = [text(48, 56, "PROGRAM", "mono wine label"),
+           text(48, 86, "From a taxonomy of pressure to agents influencing agents.", "serif ink", 20,
+                extra=' font-style="italic"'),
+           f'<line x1="{xs[0]}" y1="{y}" x2="{xs[-1]}" y2="{y}" class="line"/>',
+           f'<line x1="{xs[0]}" y1="{y}" x2="{xs[2]}" y2="{y}" stroke="{p["sig"]}" stroke-width="2" class="grow"/>']
+    css.append("@keyframes grow{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}"
+               ".grow{stroke-dasharray:600;animation:grow 3s cubic-bezier(.4,0,.2,1) .3s both}"
+               "@keyframes pop{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:scale(1)}}")
+    for i, ((name, sub, status, col), x) in enumerate(zip(steps, xs)):
+        filled = i < 3
+        d = 0.3 + i * 0.75
+        css.append(f".pop{i}{{transform-box:fill-box;transform-origin:center;animation:pop .6s ease-out {d:.2f}s both}}")
+        if filled:
+            out.append(f'<circle cx="{x}" cy="{y}" r="9" class="sig pop{i}"/>')
+        else:
+            out.append(f'<circle cx="{x}" cy="{y}" r="8" class="motif pop{i}" style="fill:{p["bg"]}" stroke-dasharray="3 3"/>')
+        out.append(text(x, y - 28, name, "serif ink", 18, "middle"))
+        out.append(text(x, y + 38, sub, "mono muted", 12, "middle"))
+        out.append(text(x, y + 60, status, f"mono {col}", 11.5, "middle", ' letter-spacing="0.6"'))
+    out.insert(0, "<style>" + "".join(css) + "</style>")
+    out.append(caption(296, "TIMELINE", ["Filled: exists. Dashed: planned. Status labels are literal; no study is",
+                                         "described as having results it does not have."], p))
+    return svg(1200, 344, "Project Aletheia program timeline",
+               "Four studies left to right: Persuasion Topography (v0, exploratory), Pressure evals v0.1 "
+               "(complete, public), Exp 001 (preregistered, no data yet), multi-agent cascades (planned).",
+               "\n".join(out), p)
+
+
 ASSETS = {
+    "aletheia/header": aletheia_header,
+    "aletheia/timeline": aletheia_timeline,
     "branding/ticker": ticker,
     "diagrams/confidence-cascade": cascade,
     "branding/avatar": avatar,

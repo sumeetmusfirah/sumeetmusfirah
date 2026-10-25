@@ -16,7 +16,7 @@ is in psychology and neuroscience at Drexel; I build the evaluation infrastructu
   <img src="assets/diagrams/research-map-light.svg" width="100%" alt="Research map: cognitive control, social cognition and neuroethics (biological) and interacting LLMs, model behavior and evaluation (artificial) feed four shared questions about belief updating, confidence, pressure, and measurement.">
 </picture>
 
-### Signal
+### Field notes
 
 - **Grace Hopper Celebration 2026** (accepted talk): *Can an AI Be Gaslit About Its Own Previous Answer?*
 - **[Pressure evals v0.1](https://github.com/Project-Aletheia-org/aletheia-pressure-evals)**: the same 180 model outputs, scored by two LLM judges, gave opposite conclusions about manipulation. The verdict depended on who graded it.
