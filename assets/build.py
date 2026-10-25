@@ -7,7 +7,7 @@ output is deterministic: edit a token or a layout, re-run, commit the diff.
     python3 assets/build.py
 
 Design rules (see assets/README.md): warm paper ground, charcoal ink,
-sage/moss + clay + burgundy accents used sparingly, editorial serif for
+olive + clay + signature orange accents used sparingly, editorial serif for
 words, monospace for labels and numbers, hairline strokes, no gradients.
 Numbers in figures must come from a public, cited source.
 """
@@ -22,26 +22,28 @@ ROOT = Path(__file__).resolve().parent
 # ---------------------------------------------------------------- tokens ---
 PALETTES = {
     "light": {
-        "bg": "#F6F1E7",      # ivory / parchment
-        "rule": "#D9D0BE",    # hairline on paper
-        "ink": "#2B2A28",     # charcoal text
-        "muted": "#625D55",   # secondary text (>= 5:1 on bg)
-        "sage": "#7D8B6A",    # strokes, motifs
-        "moss": "#4E5E42",    # labels (>= 6:1 on bg)
-        "clay": "#A65B36",    # restrained terracotta (strokes / large text)
-        "wine": "#7A2E39",    # deep burgundy accent
-        "panel": "#FBF8F1",   # box fill, slightly lifted from bg
+        "bg": "#FAF9F5",      # warm off-white
+        "rule": "#E3E0D6",    # hairline on paper
+        "ink": "#141413",     # near-black text
+        "muted": "#5E5D59",   # secondary text (6.3:1)
+        "sage": "#788C5D",    # olive: strokes, motifs
+        "moss": "#556640",    # olive labels (5.9:1)
+        "clay": "#B4532F",    # deep clay for text (4.7:1)
+        "wine": "#B4532F",    # accent labels share deep clay
+        "sig": "#D97757",     # signature orange: dots, pulses, nodes (graphics only)
+        "panel": "#F0EEE6",   # box fill
     },
     "dark": {
-        "bg": "#1F1E1C",      # warm charcoal, not pure black
-        "rule": "#3B3833",
-        "ink": "#ECE5D8",
-        "muted": "#ABA394",
-        "sage": "#93A47F",
-        "moss": "#B3C29E",
-        "clay": "#D3916A",
-        "wine": "#D08A94",    # lifted burgundy for contrast on dark
-        "panel": "#262522",
+        "bg": "#1A1915",
+        "rule": "#3A3934",
+        "ink": "#FAF9F5",
+        "muted": "#B0AEA5",
+        "sage": "#95A876",
+        "moss": "#A9BC8A",
+        "clay": "#E08A6D",
+        "wine": "#E08A6D",
+        "sig": "#D97757",
+        "panel": "#24231F",
     },
 }
 
@@ -54,7 +56,7 @@ def style(p: dict) -> str:
 .serif{{font-family:{SERIF}}}
 .mono{{font-family:{MONO}}}
 .ink{{fill:{p['ink']}}} .muted{{fill:{p['muted']}}} .moss{{fill:{p['moss']}}}
-.wine{{fill:{p['wine']}}} .clay{{fill:{p['clay']}}}
+.wine{{fill:{p['wine']}}} .clay{{fill:{p['clay']}}} .sig{{fill:{p['sig']}}}
 .hair{{stroke:{p['rule']};stroke-width:1;fill:none}}
 .line{{stroke:{p['muted']};stroke-width:0.9;fill:none}}
 .motif{{stroke:{p['sage']};stroke-width:1.1;fill:none;stroke-linecap:round}}
@@ -72,7 +74,6 @@ def style(p: dict) -> str:
 .glow{{animation:glow 3.2s ease-in-out 2.6s infinite}}
 .sway{{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite}}
 .cursor{{animation:blink 1.1s steps(1) infinite}}
-@media (prefers-reduced-motion:reduce){{*{{animation:none!important}}.pulse{{opacity:0}}}}
 </style>"""
 
 
@@ -135,10 +136,10 @@ def neuron_to_graph(ox=0, oy=0):
         (x1, y1), (x2, y2) = nodes[a], nodes[b]
         g.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" class="motif late" stroke-opacity="0.75"/>')
     for k, (x, y) in nodes.items():
-        cls = "wine glow" if k == "D" else "motif late"
+        cls = "sig glow" if k == "D" else "motif late"
         fill = "" if k == "D" else ' style="fill:var(--bg)"'
         g.append(f'<circle cx="{x}" cy="{y}" r="4.2" class="{cls}"{fill}/>')
-    g.append('<circle r="2.6" class="wine pulse"/>')  # signal travelling soma -> graph
+    g.append('<circle r="2.6" class="sig pulse"/>')  # signal travelling soma -> graph
     g.append("</g>")
     return "\n".join(g)
 
@@ -168,7 +169,7 @@ def sprig(cx, cy):
 def header(p):
     body = "\n".join([
         text(56, 64, "RESEARCH NOTEBOOK  ·  AI × COGNITION × NEURO", "mono muted label"),
-        f'<rect x="436" y="54" width="7" height="12" class="wine cursor"/>',
+        f'<rect x="436" y="54" width="7" height="12" class="sig cursor"/>',
         f'<line x1="56" y1="84" x2="1144" y2="84" stroke="{p["ink"]}" stroke-width="0.8"/>',
         text(56, 162, "Sumeet Musfirah", "serif ink", 58, extra=' letter-spacing="0.4"'),
         text(56, 206, "Studying intelligence across biological and artificial systems.",
@@ -244,7 +245,7 @@ def research_map(p):
     for x, name, side in projects:
         ty = ay - 14 if side < 0 else ay + 24
         anchor = "end" if x > 1050 else "middle"
-        out.append(f'<circle cx="{x}" cy="{ay}" r="4" class="wine"/>')
+        out.append(f'<circle cx="{x}" cy="{ay}" r="4" class="sig"/>')
         out.append(text(x, ty, name, "mono ink", 11.5, anchor))
     out.append(caption(540, "FIGURE 1", [
         "Research program. Questions about belief updating and influence, studied in brains and",
@@ -346,7 +347,7 @@ def avatar(p):
         f'<circle cx="256" cy="256" r="214" class="hair" stroke-width="1.5"/>',
         f'<g transform="translate(-406,250) scale(0.7)" opacity="0.9">{static_motif()}</g>',
         text(256, 214, "SM", "serif ink", 150, "middle", ' letter-spacing="2"'),
-        f'<line x1="186" y1="244" x2="326" y2="244" stroke="{p["wine"]}" stroke-width="1.2"/>',
+        f'<line x1="186" y1="244" x2="326" y2="244" stroke="{p["sig"]}" stroke-width="1.6"/>',
         text(256, 276, "AI × COGNITION × NEURO", "mono muted", 13, "middle", ' letter-spacing="2.4"'),
     ])
     return svg(512, 512, "SM monogram", "Monogram SM over a fine-line neuron-to-graph motif.",
@@ -354,8 +355,8 @@ def avatar(p):
 
 
 def brand_sheet(p):
-    sw = [("bg", "ground"), ("ink", "ink"), ("sage", "sage · motif"), ("moss", "moss · label"),
-          ("clay", "clay · accent"), ("wine", "burgundy · signal")]
+    sw = [("bg", "ground"), ("ink", "ink"), ("sage", "olive · motif"), ("moss", "olive · label"),
+          ("clay", "clay · text accent"), ("sig", "orange · signal")]
     out = [text(48, 60, "BRAND SHEET", "mono wine label"),
            text(48, 104, "Editorial serif for ideas.", "serif ink", 30),
            text(48, 140, "Monospace for labels, code, and numbers — 0123456789", "mono muted", 15)]
@@ -368,7 +369,7 @@ def brand_sheet(p):
     out.append(caption(372, "TOKENS", ["Light and dark palettes are defined once in assets/build.py;",
                                         "every asset is regenerated from them."], p))
     return svg(1200, 420, "Brand sheet", "Typography and color palette: parchment, charcoal, "
-               "sage, moss, clay, burgundy.", "\n".join(out), p)
+               "olive, clay, signature orange.", "\n".join(out), p)
 
 
 def ticker(p):
@@ -382,7 +383,7 @@ def ticker(p):
     cycle = n * slot
     vis = 100 / n
     css = [f"@keyframes show{{0%,{vis - 0.1:.2f}%{{opacity:1}}{vis:.2f}%,100%{{opacity:0}}}}",
-           "@media (prefers-reduced-motion:reduce){.ph{opacity:0}.ph0{opacity:1}.cover{display:none}}"]
+           ]
     out = [text(48, 52, "> currently investigating:", "mono muted", 15)]
     x0 = 300
     for i, ph in enumerate(phrases):
@@ -394,7 +395,7 @@ def ticker(p):
         out.append(f'<g class="ph ph{i}">'
                    + text(x0, 52, ph, "mono ink", 15)
                    + f'<g class="cover cv{i}"><rect x="{x0 - 2}" y="30" width="{w + 20}" height="32" '
-                     f'fill="{p["bg"]}"/><rect x="{x0}" y="38" width="8" height="18" class="wine cursor"/></g>'
+                     f'fill="{p["bg"]}"/><rect x="{x0}" y="38" width="8" height="18" class="sig cursor"/></g>'
                    + "</g>")
     out.insert(0, "<style>" + "".join(css) + "</style>")
     return svg(1200, 84, "Currently investigating",
@@ -423,7 +424,7 @@ def cascade(p):
         out.append(f'<rect x="{x - 5}" y="{base - 50}" width="10" height="50" class="hair"/>')
         out.append(f'<rect x="{x - 5}" y="{base - 50}" width="10" height="50" class="clay b{i}"/>')
         out.append(f'<circle cx="{x}" cy="{cy}" r="12" class="motif" style="fill:{p["panel"]}"/>')
-        out.append(f'<circle cx="{x}" cy="{cy}" r="12" class="wine n{i}"/>')
+        out.append(f'<circle cx="{x}" cy="{cy}" r="12" class="sig n{i}"/>')
         out.append(text(x, cy + 36, f"agent {i + 1}", "mono muted", 11, "middle"))
     ey = 262
     out += [f'<line x1="{xs[0] - 12}" y1="{ey}" x2="{xs[-1] + 12}" y2="{ey}" stroke="{p["moss"]}" '
@@ -434,9 +435,9 @@ def cascade(p):
         "An illustration of the hypothesis Aletheia tests, not a result: each agent sees the previous",
         "agent's answer and confidence, while the evidence itself never changes.",
     ], p))
-    out.insert(0, "<style>" + "".join(css) + "@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>")
+    out.insert(0, "<style>" + "".join(css) + "</style>")
     return svg(1200, 392, "Sketch: confidence cascade across agents",
-               "Schematic, not data. Eight agents in a chain; each turns burgundy and raises a "
+               "Schematic, not data. Eight agents in a chain; each turns orange and raises a "
                "confidence bar after the previous one, while a dashed evidence line stays flat. "
                "Illustrates the question of whether confidence can propagate independently of evidence.",
                "\n".join(out), p)

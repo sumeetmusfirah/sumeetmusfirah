@@ -16,19 +16,22 @@ python3 assets/build.py
 
 ## Rules
 
-- **Ground and ink.** Warm parchment `#F6F1E7` / charcoal `#2B2A28` in light; warm charcoal
-  `#1F1E1C` / ivory `#ECE5D8` in dark. Images are swapped with `<picture>` +
-  `prefers-color-scheme`, so neither theme shows a glaring card.
-- **Accents, sparingly.** Sage for motifs, moss for labels, clay for "artificial", burgundy for
-  the single thing the eye should land on. Body-text colors meet WCAG AA (≥ 4.5:1) on their ground.
+- **Ground and ink.** Warm off-white `#FAF9F5` / near-black `#141413` in light; `#1A1915` /
+  `#FAF9F5` in dark. The palette is a warm editorial one in the spirit of Anthropic's. It borrows
+  colour and mood only, with no logos, names, or proprietary fonts. Images are swapped with
+  `<picture>` + `prefers-color-scheme`.
+- **Accents, sparingly.** Olive for motifs and labels, deep clay `#B4532F` for accent text, and
+  the signature orange `#D97757` for graphics only (dots, pulses, active nodes), because it is
+  under 4.5:1 on the light ground. All text colours meet WCAG AA.
 - **Type.** Editorial serif (Iowan Old Style → Palatino → Georgia) for words; monospace
   (SF Mono → Menlo → Consolas) for labels, code, and numbers. System fonts only, because
   GitHub's image proxy won't load web fonts inside SVG.
 - **Motifs.** One fine-line neuron → agent-graph drawing (header, avatar) and one botanical
   sprig (footer). Nowhere else.
-- **Motion.** CSS-only, slow, under 4 s per cycle, and switched off by `prefers-reduced-motion`.
-  The header draws its dendrites once and then sends a single signal pulse from the soma into
-  the graph; the footer sprig sways a few degrees. Raster exports (the avatar PNG) are static.
+- **Motion.** CSS-only and slow. It plays for every viewer, including those with
+  reduced-motion set (owner's choice). The header draws its dendrites, then sends a signal pulse
+  into the graph. The ticker types out current threads, the cascade sketch lights agents in
+  sequence, and the footer sprig sways. Raster exports (the avatar PNG) are static.
 - **Figures are claims.** Every number in a figure must come from a public, linked source. Design
   figures for studies with no data say so in the caption.
 - **Accessibility.** Each SVG carries `<title>`/`<desc>`; the README repeats all of its content

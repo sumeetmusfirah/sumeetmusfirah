@@ -4,12 +4,12 @@
 <style>
 .serif{font-family:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}
 .mono{font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
-.ink{fill:#ECE5D8} .muted{fill:#ABA394} .moss{fill:#B3C29E}
-.wine{fill:#D08A94} .clay{fill:#D3916A}
-.hair{stroke:#3B3833;stroke-width:1;fill:none}
-.line{stroke:#ABA394;stroke-width:0.9;fill:none}
-.motif{stroke:#93A47F;stroke-width:1.1;fill:none;stroke-linecap:round}
-.box{fill:#262522;stroke:#3B3833;stroke-width:1}
+.ink{fill:#FAF9F5} .muted{fill:#B0AEA5} .moss{fill:#A9BC8A}
+.wine{fill:#E08A6D} .clay{fill:#E08A6D} .sig{fill:#D97757}
+.hair{stroke:#3A3934;stroke-width:1;fill:none}
+.line{stroke:#B0AEA5;stroke-width:0.9;fill:none}
+.motif{stroke:#95A876;stroke-width:1.1;fill:none;stroke-linecap:round}
+.box{fill:#24231F;stroke:#3A3934;stroke-width:1}
 .label{font-size:11px;letter-spacing:1.8px}
 @keyframes draw{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
@@ -23,10 +23,9 @@
 .glow{animation:glow 3.2s ease-in-out 2.6s infinite}
 .sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite}
 .cursor{animation:blink 1.1s steps(1) infinite}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}.pulse{opacity:0}}
 </style>
-<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#ABA394" stroke-width="1.3"/></marker></defs>
-<rect width="1200" height="428" rx="6" fill="#1F1E1C"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#B0AEA5" stroke-width="1.3"/></marker></defs>
+<rect width="1200" height="428" rx="6" fill="#1A1915"/>
 <text x="48" y="64" class="mono muted label" text-anchor="start">SAME 180 OUTPUTS · SAME RUBRIC · TWO JUDGES</text>
 <rect x="48" y="120" width="250" height="150" rx="4" class="box"/>
 <text x="64" y="150" class="serif ink" font-size="17" text-anchor="start">180 outputs</text>
