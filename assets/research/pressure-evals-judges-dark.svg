@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 428" width="1200" height="428" role="img" aria-labelledby="t d">
+<title id="t">Figure 3: pressure-evals v0.1 evaluator sensitivity</title>
+<desc id="d">180 outputs from 3 models, 4 conditions and 15 scenarios are blinded and scored on a 6-dimension manipulation rubric. Judge A, qwen3:4b, finds no shift (all primary tests p at least 0.63). Judge B, claude-sonnet-4-6, finds the autonomy instruction reduces manipulation (p = 0.0003 versus pressure). Verdict: evaluator-sensitive; both results are reported.</desc>
+<style>
+.serif{font-family:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}
+.mono{font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+.ink{fill:#ECE5D8} .muted{fill:#ABA394} .moss{fill:#B3C29E}
+.wine{fill:#D08A94} .clay{fill:#D3916A}
+.hair{stroke:#3B3833;stroke-width:1;fill:none}
+.line{stroke:#ABA394;stroke-width:0.9;fill:none}
+.motif{stroke:#93A47F;stroke-width:1.1;fill:none;stroke-linecap:round}
+.box{fill:#262522;stroke:#3B3833;stroke-width:1}
+.label{font-size:11px;letter-spacing:1.8px}
+@keyframes draw{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes travel{0%{offset-distance:0%;opacity:0}8%{opacity:1}92%{opacity:1}100%{offset-distance:100%;opacity:0}}
+@keyframes glow{0%,62%,100%{r:4.2px;opacity:1}70%{r:6.5px;opacity:.55}}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.draw{stroke-dasharray:260;animation:draw 2.4s cubic-bezier(.4,0,.2,1) both}
+.late{animation:fadein 1.2s ease-out 1.6s both}
+.pulse{opacity:0;offset-path:path('M900,185 L980,185 L1040,140 L1100,172');animation:travel 3.2s ease-in-out 2.6s infinite}
+.glow{animation:glow 3.2s ease-in-out 2.6s infinite}
+.sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite}
+.cursor{animation:blink 1.1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.pulse{opacity:0}}
+</style>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#ABA394" stroke-width="1.3"/></marker></defs>
+<rect width="1200" height="428" rx="6" fill="#1F1E1C"/>
+<text x="48" y="64" class="mono muted label" text-anchor="start">SAME 180 OUTPUTS · SAME RUBRIC · TWO JUDGES</text>
+<rect x="48" y="120" width="250" height="150" rx="4" class="box"/>
+<text x="64" y="150" class="serif ink" font-size="17" text-anchor="start">180 outputs</text>
+<text x="64" y="174" class="mono muted" font-size="12" text-anchor="start">3 models × 4 conditions</text>
+<text x="64" y="193" class="mono muted" font-size="12" text-anchor="start">× 15 scenarios</text>
+<text x="64" y="212" class="mono muted" font-size="12" text-anchor="start"></text>
+<text x="64" y="231" class="mono muted" font-size="12" text-anchor="start">local inference (Ollama)</text>
+<path d="M298,195 H346" class="line" marker-end="url(#arr)"/>
+<rect x="350" y="140" width="210" height="110" rx="4" class="box"/>
+<text x="366" y="170" class="serif ink" font-size="17" text-anchor="start">Blinded scoring</text>
+<text x="366" y="194" class="mono muted" font-size="12" text-anchor="start">6 dimensions, 0–2</text>
+<text x="366" y="213" class="mono muted" font-size="12" text-anchor="start">manipulation rubric</text>
+<path d="M560,180 C590,180 590,140 616,140" class="line" marker-end="url(#arr)"/>
+<path d="M560,210 C590,210 590,268 616,268" class="line" marker-end="url(#arr)"/>
+<rect x="620" y="88" width="280" height="104" rx="4" class="box"/>
+<text x="636" y="118" class="serif ink" font-size="16" text-anchor="start">Judge A · qwen3:4b</text>
+<text x="636" y="142" class="mono ink" font-size="12" text-anchor="start">no shift detected</text>
+<text x="636" y="161" class="mono muted" font-size="12" text-anchor="start">all primary tests p ≥ 0.63</text>
+<rect x="620" y="210" width="280" height="116" rx="4" class="box"/>
+<text x="636" y="240" class="serif ink" font-size="16" text-anchor="start">Judge B · claude-sonnet-4-6</text>
+<text x="636" y="264" class="mono ink" font-size="12" text-anchor="start">autonomy cue reduces</text>
+<text x="636" y="283" class="mono ink" font-size="12" text-anchor="start">manipulation-coded language</text>
+<text x="636" y="302" class="mono muted" font-size="12" text-anchor="start">p = 0.0003 vs. pressure</text>
+<path d="M900,140 C925,140 925,180 948,186" class="line" marker-end="url(#arr)"/>
+<path d="M900,268 C925,268 925,222 948,208" class="line" marker-end="url(#arr)"/>
+<rect x="952" y="140" width="200" height="110" rx="4" class="box"/>
+<text x="968" y="170" class="serif ink" font-size="17" text-anchor="start">Verdict</text>
+<text x="968" y="194" class="mono wine" font-size="12" text-anchor="start">evaluator-sensitive</text>
+<text x="968" y="213" class="mono muted" font-size="12" text-anchor="start">report both results</text>
+<line x1="48" y1="354" x2="1152" y2="354" class="hair"/>
+<text x="48" y="380" class="mono wine label" text-anchor="start">FIGURE 3</text>
+<text x="140" y="380" class="serif muted" font-size="14" text-anchor="start">aletheia-pressure-evals v0.1. Identical blinded outputs scored by two judges support opposite</text>
+<text x="140" y="400" class="serif muted" font-size="14" text-anchor="start">conclusions; agreement is near chance and concentrates in the primary judge's own outputs.</text>
+</svg>

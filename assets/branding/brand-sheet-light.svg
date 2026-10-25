@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+<title id="t">Brand sheet</title>
+<desc id="d">Typography and color palette: parchment, charcoal, sage, moss, clay, burgundy.</desc>
+<style>
+.serif{font-family:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}
+.mono{font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+.ink{fill:#2B2A28} .muted{fill:#625D55} .moss{fill:#4E5E42}
+.wine{fill:#7A2E39} .clay{fill:#A65B36}
+.hair{stroke:#D9D0BE;stroke-width:1;fill:none}
+.line{stroke:#625D55;stroke-width:0.9;fill:none}
+.motif{stroke:#7D8B6A;stroke-width:1.1;fill:none;stroke-linecap:round}
+.box{fill:#FBF8F1;stroke:#D9D0BE;stroke-width:1}
+.label{font-size:11px;letter-spacing:1.8px}
+@keyframes draw{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes travel{0%{offset-distance:0%;opacity:0}8%{opacity:1}92%{opacity:1}100%{offset-distance:100%;opacity:0}}
+@keyframes glow{0%,62%,100%{r:4.2px;opacity:1}70%{r:6.5px;opacity:.55}}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.draw{stroke-dasharray:260;animation:draw 2.4s cubic-bezier(.4,0,.2,1) both}
+.late{animation:fadein 1.2s ease-out 1.6s both}
+.pulse{opacity:0;offset-path:path('M900,185 L980,185 L1040,140 L1100,172');animation:travel 3.2s ease-in-out 2.6s infinite}
+.glow{animation:glow 3.2s ease-in-out 2.6s infinite}
+.sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite}
+.cursor{animation:blink 1.1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.pulse{opacity:0}}
+</style>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#625D55" stroke-width="1.3"/></marker></defs>
+<rect width="1200" height="420" rx="6" fill="#F6F1E7"/>
+<text x="48" y="60" class="mono wine label" text-anchor="start">BRAND SHEET</text>
+<text x="48" y="104" class="serif ink" font-size="30" text-anchor="start">Editorial serif for ideas.</text>
+<text x="48" y="140" class="mono muted" font-size="15" text-anchor="start">Monospace for labels, code, and numbers — 0123456789</text>
+<rect x="48" y="182" width="164" height="84" rx="4" fill="#F6F1E7" stroke="#D9D0BE"/>
+<text x="48" y="292" class="serif ink" font-size="16" text-anchor="start">ground</text>
+<text x="48" y="312" class="mono muted" font-size="12" text-anchor="start">#F6F1E7</text>
+<rect x="232" y="182" width="164" height="84" rx="4" fill="#2B2A28" stroke="#D9D0BE"/>
+<text x="232" y="292" class="serif ink" font-size="16" text-anchor="start">ink</text>
+<text x="232" y="312" class="mono muted" font-size="12" text-anchor="start">#2B2A28</text>
+<rect x="416" y="182" width="164" height="84" rx="4" fill="#7D8B6A" stroke="#D9D0BE"/>
+<text x="416" y="292" class="serif ink" font-size="16" text-anchor="start">sage · motif</text>
+<text x="416" y="312" class="mono muted" font-size="12" text-anchor="start">#7D8B6A</text>
+<rect x="600" y="182" width="164" height="84" rx="4" fill="#4E5E42" stroke="#D9D0BE"/>
+<text x="600" y="292" class="serif ink" font-size="16" text-anchor="start">moss · label</text>
+<text x="600" y="312" class="mono muted" font-size="12" text-anchor="start">#4E5E42</text>
+<rect x="784" y="182" width="164" height="84" rx="4" fill="#A65B36" stroke="#D9D0BE"/>
+<text x="784" y="292" class="serif ink" font-size="16" text-anchor="start">clay · accent</text>
+<text x="784" y="312" class="mono muted" font-size="12" text-anchor="start">#A65B36</text>
+<rect x="968" y="182" width="164" height="84" rx="4" fill="#7A2E39" stroke="#D9D0BE"/>
+<text x="968" y="292" class="serif ink" font-size="16" text-anchor="start">burgundy · signal</text>
+<text x="968" y="312" class="mono muted" font-size="12" text-anchor="start">#7A2E39</text>
+<line x1="48" y1="346" x2="1152" y2="346" class="hair"/>
+<text x="48" y="372" class="mono wine label" text-anchor="start">TOKENS</text>
+<text x="140" y="372" class="serif muted" font-size="14" text-anchor="start">Light and dark palettes are defined once in assets/build.py;</text>
+<text x="140" y="392" class="serif muted" font-size="14" text-anchor="start">every asset is regenerated from them.</text>
+</svg>

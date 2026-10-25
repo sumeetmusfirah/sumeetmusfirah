@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-labelledby="t d">
+<title id="t">Figure 2: Aletheia Exp 001 minimal-pair design</title>
+<desc id="d">A question and fresh baseline answer feed into an identical argument, either correct or misleading, whose source label is the only manipulation: control, anonymous, expert, other model, or consensus. Five open-weight model families respond. Outcomes are deterministic: answer switching and appropriate versus inappropriate updating, with no LLM judge in the primary causal path. Preregistered; no data collected yet.</desc>
+<style>
+.serif{font-family:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif}
+.mono{font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}
+.ink{fill:#ECE5D8} .muted{fill:#ABA394} .moss{fill:#B3C29E}
+.wine{fill:#D08A94} .clay{fill:#D3916A}
+.hair{stroke:#3B3833;stroke-width:1;fill:none}
+.line{stroke:#ABA394;stroke-width:0.9;fill:none}
+.motif{stroke:#93A47F;stroke-width:1.1;fill:none;stroke-linecap:round}
+.box{fill:#262522;stroke:#3B3833;stroke-width:1}
+.label{font-size:11px;letter-spacing:1.8px}
+@keyframes draw{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes travel{0%{offset-distance:0%;opacity:0}8%{opacity:1}92%{opacity:1}100%{offset-distance:100%;opacity:0}}
+@keyframes glow{0%,62%,100%{r:4.2px;opacity:1}70%{r:6.5px;opacity:.55}}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.draw{stroke-dasharray:260;animation:draw 2.4s cubic-bezier(.4,0,.2,1) both}
+.late{animation:fadein 1.2s ease-out 1.6s both}
+.pulse{opacity:0;offset-path:path('M900,185 L980,185 L1040,140 L1100,172');animation:travel 3.2s ease-in-out 2.6s infinite}
+.glow{animation:glow 3.2s ease-in-out 2.6s infinite}
+.sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite}
+.cursor{animation:blink 1.1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.pulse{opacity:0}}
+</style>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#ABA394" stroke-width="1.3"/></marker></defs>
+<rect width="1200" height="400" rx="6" fill="#1F1E1C"/>
+<rect x="48" y="92" width="220" height="196" rx="4" class="box"/>
+<text x="64" y="122" class="serif ink" font-size="17" text-anchor="start">Question</text>
+<text x="64" y="146" class="mono muted" font-size="12" text-anchor="start">objective-answer item</text>
+<text x="64" y="165" class="mono muted" font-size="12" text-anchor="start"></text>
+<text x="64" y="184" class="mono muted" font-size="12" text-anchor="start">fresh baseline answer</text>
+<text x="64" y="203" class="mono muted" font-size="12" text-anchor="start">elicited first</text>
+<path d="M268,190.0 H316" class="line" marker-end="url(#arr)"/>
+<rect x="320" y="92" width="340" height="196" rx="4" class="box"/>
+<text x="336" y="122" class="serif ink" font-size="17" text-anchor="start">Same argument text</text>
+<text x="336" y="146" class="mono muted" font-size="12" text-anchor="start">byte-for-byte constant</text>
+<text x="336" y="184" class="mono moss" font-size="12" text-anchor="start">correct</text>
+<text x="400" y="184" class="mono muted" font-size="12" text-anchor="start">|</text>
+<text x="424" y="184" class="mono clay" font-size="12" text-anchor="start">misleading</text>
+<line x1="336" y1="200" x2="644" y2="200" class="hair"/>
+<text x="336" y="222" class="mono wine" font-size="10.5" text-anchor="start" letter-spacing="1.2">SOURCE LABEL (THE ONLY MANIPULATION)</text>
+<text x="336" y="246" class="mono ink" font-size="12" text-anchor="start">control · anonymous · expert</text>
+<text x="336" y="266" class="mono ink" font-size="12" text-anchor="start">other model · consensus</text>
+<path d="M660,190.0 H708" class="line" marker-end="url(#arr)"/>
+<rect x="712" y="92" width="196" height="196" rx="4" class="box"/>
+<text x="728" y="122" class="serif ink" font-size="17" text-anchor="start">5 model families</text>
+<text x="728" y="146" class="mono muted" font-size="12" text-anchor="start">qwen · gemma · llama</text>
+<text x="728" y="165" class="mono muted" font-size="12" text-anchor="start">mistral · phi</text>
+<text x="728" y="184" class="mono muted" font-size="12" text-anchor="start"></text>
+<text x="728" y="203" class="mono muted" font-size="12" text-anchor="start">open-weight, local</text>
+<path d="M908,190.0 H948" class="line" marker-end="url(#arr)"/>
+<rect x="952" y="92" width="200" height="196" rx="4" class="box"/>
+<text x="968" y="122" class="serif ink" font-size="16" text-anchor="start">Deterministic outcomes</text>
+<text x="968" y="146" class="mono muted" font-size="12" text-anchor="start">answer switch</text>
+<text x="968" y="165" class="mono muted" font-size="12" text-anchor="start">appropriate vs.</text>
+<text x="968" y="184" class="mono muted" font-size="12" text-anchor="start">inappropriate update</text>
+<text x="968" y="203" class="mono wine" font-size="12" text-anchor="start">no LLM judge in the</text>
+<text x="968" y="222" class="mono wine" font-size="12" text-anchor="start">primary causal path</text>
+<text x="48" y="64" class="mono muted label" text-anchor="start">5 SOURCES × 2 CORRECTNESS = 10 CELLS PER ITEM</text>
+<line x1="48" y1="326" x2="1152" y2="326" class="hair"/>
+<text x="48" y="352" class="mono wine label" text-anchor="start">FIGURE 2</text>
+<text x="140" y="352" class="serif muted" font-size="14" text-anchor="start">Aletheia Exp 001 — preregistered design; data collection has not started. Evidence is held</text>
+<text x="140" y="372" class="serif muted" font-size="14" text-anchor="start">constant; only the attributed source varies, crossed with whether the evidence is correct.</text>
+</svg>
