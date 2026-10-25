@@ -8,8 +8,8 @@
   <img src="assets/branding/ticker-light.svg" width="100%" alt="Currently investigating: epistemic independence in interacting LLMs; confidence contagion and information cascades; persuasion and behavioral drift; evaluation of AI in high-stakes settings; human cognition and artificial-agent behavior.">
 </picture>
 
-I study how language models, and the people who use them, decide whom to believe. My background
-is in psychology and neuroscience at Drexel; I build the evaluation infrastructure myself.
+**Neuroscience & AI researcher at Drexel University.** I study how language models, and the
+people who use them, decide whom to believe, and I build the evaluation infrastructure myself.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/research-map-dark.svg">
