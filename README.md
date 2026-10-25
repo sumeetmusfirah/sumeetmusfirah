@@ -11,6 +11,11 @@
 I study how language models, and the people who use them, decide whom to believe. My background
 is in psychology and neuroscience at Drexel; I build the evaluation infrastructure myself.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/research-map-dark.svg">
+  <img src="assets/diagrams/research-map-light.svg" width="100%" alt="Research map: cognitive control, social cognition and neuroethics (biological) and interacting LLMs, model behavior and evaluation (artificial) feed four shared questions about belief updating, confidence, pressure, and measurement.">
+</picture>
+
 ### Signal
 
 - **Grace Hopper Celebration 2026** (accepted talk): *Can an AI Be Gaslit About Its Own Previous Answer?*
@@ -19,9 +24,19 @@ is in psychology and neuroscience at Drexel; I build the evaluation infrastructu
 - **Applied AI at ABIM**: shipped a cited-evidence retrieval platform (pgvector + RRF on AWS), a multimodal assessment model, and an LLM evaluation workflow for clinical cases.
 - **CogNeW Lab**: ML pipelines for EEG and neuromodulation data from 100+ participants.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/confidence-cascade-dark.svg">
+  <img src="assets/diagrams/confidence-cascade-light.svg" width="100%" alt="Sketch, not data: eight agents in a chain adopt the previous agent's answer and raise their confidence while the evidence stays unchanged. Can confidence travel further than the evidence that justified it?">
+</picture>
+
 ### Stack
 
 `Python` · `PyTorch` · `Hugging Face` · `vLLM` · `OpenAI / Anthropic APIs` · `FastAPI` · `PostgreSQL + pgvector` · `Docker` · `AWS` · `scikit-learn` · `multimodal CV` · `evaluation infrastructure`
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sumeetmusfirah/sumeetmusfirah/output/snake-dark.svg">
+  <img src="https://raw.githubusercontent.com/sumeetmusfirah/sumeetmusfirah/output/snake-light.svg" width="100%" alt="Contribution graph animated as a snake moving across the year's commit squares.">
+</picture>
 
 <p align="center">
   <a href="mailto:sumeetmusfirah23@gmail.com">Email</a> ·
